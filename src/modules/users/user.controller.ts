@@ -15,6 +15,7 @@ import { UpdateUserDTO } from './domain/dto/updateUser.dto';
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
+
   @Get()
   list() {
     return this.userService.list();
