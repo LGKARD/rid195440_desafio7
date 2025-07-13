@@ -1,98 +1,150 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# RID195440_Desafio7
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+API RESTful desenvolvida com NestJS, utilizando PostgreSQL e Prisma ORM, como parte do Desafio 7 da Escola DNC. Trata-se de um sistema de gerenciamento de usuários com autenticação segura via JWT e hash de senhas com Bcrypt.
 
-## Description
+## 📌 Descrição do Projeto
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A aplicação permite o gerenciamento completo de usuários, incluindo:
 
-## Project setup
+- Criação de novos usuários com validação de dados.
+- Leitura de usuários por ID e listagem geral.
+- Atualização e remoção de usuários.
+- Autenticação de usuários com geração de tokens JWT.
+- Proteção de rotas com validação de token.
+- Hash seguro de senhas usando Bcrypt.
+- Arquitetura baseada em módulos e serviços do NestJS.
 
+## ⚙️ Tecnologias Utilizadas
+
+- **NestJS**: Framework escalável para Node.js.
+- **Prisma ORM**: ORM moderno para trabalhar com PostgreSQL.
+- **PostgreSQL**: Banco de dados relacional utilizado na aplicação.
+- **Bcrypt**: Utilizado para criptografia de senhas.
+- **JWT (JSON Web Token)**: Para autenticação e autorização.
+- **dotenv**: Gerenciamento de variáveis de ambiente.
+
+## 🚀 Como Executar Localmente
+
+1. **Clone o repositório**
 ```bash
-$ npm install
+git clone https://github.com/LGKARD/rid195440_desafio7.git
 ```
 
-## Compile and run the project
-
+2. **Acesse a pasta**
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+cd rid195440_desafio7
 ```
 
-## Run tests
-
+3. **Instale as dependências**
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm install
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+4. **Configure o banco de dados**
+- Crie um banco PostgreSQL local.
+- Renomeie o arquivo `.env.example` para `.env` e configure as variáveis:
+```
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome_do_banco"
+JWT_SECRET="sua_chave_jwt_segura"
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+5. **Rode as migrações do Prisma**
+```bash
+npx prisma migrate dev
+```
 
-## Resources
+6. **Inicie o servidor**
+```bash
+npm run start:dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+A aplicação estará disponível em:
+👉 `http://localhost:3000`
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## ✅ Funcionalidades
 
-## Support
+### Usuários
+- **POST /users** – Criação de usuário com senha criptografada.
+- **GET /users/:id** – Consulta de usuário por ID.
+- **GET /users** – Listagem de todos os usuários.
+- **PATCH /users/:id** – Atualização de dados do usuário.
+- **DELETE /users/:id** – Exclusão de usuário.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Autenticação
+- **POST /auth/login** – Autenticação de usuário com e-mail e senha.
+- Geração de **token JWT** em caso de sucesso.
+- Proteção de rotas autenticadas via middleware JWT.
 
-## Stay in touch
+## 📦 Exemplo de Requisição
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+🔹 **Criação de Usuário (POST /usuarios)**
+```json
+{
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "password": "12345",
+    "role": "USER"
+}
+```
 
-## License
+🔹 **Login (POST /auth/login)**
+```json
+{
+  "email": "teste@email.com",
+  "password": "12345"
+}
+```
+Retorno:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+🔹 **Requisição Autenticada**
+Inclua o token no header para acessar rotas protegidas:
+```
+Authorization: Bearer <access_token>
+```
+
+🔹 **Forgot Password (POST /auth/forgot-password**
+```json
+{
+    "email": "teste@gmail.com"
+}
+```
+Retorno:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+🔹 **Reset Password (PATCH /auth/reset-password**
+```json
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    "password": "123456789"
+}
+```
+Retorno:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+
+
+## ⚠️ Observações
+
+- É necessário ter o PostgreSQL instalado e rodando localmente.
+- Os dados são persistidos via Prisma no banco de dados configurado no `.env`.
+- A estrutura do projeto segue os padrões do NestJS, com separação clara entre módulos, controllers e services.
+- O sistema não inclui frontend – apenas a API backend.
+
+## ✍️ Autor
+
+Desenvolvido por **LG Kard** como parte do curso de Tecnologia da Escola DNC.  
+🔗 [Repositório no GitHub](https://github.com/LGKARD/rid195440_desafio7)
