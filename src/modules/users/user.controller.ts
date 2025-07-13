@@ -16,12 +16,12 @@ import { AuthGuard } from 'src/shared/guards/auth.guard';
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
-
   @UseGuards(AuthGuard)
   @Get()
   list() {
     return this.userService.list();
   }
+  @UseGuards(AuthGuard)
   @Get(':id')
   show(@ParamId() id: number) {
     return this.userService.show(id);
@@ -31,10 +31,12 @@ export class UserController {
   createUser(@Body() body: CreateUserDTO) {
     return this.userService.create(body);
   }
+  @UseGuards(AuthGuard)
   @Patch(':id')
   updateUser(@ParamId() id: number, @Body() body: UpdateUserDTO) {
     return this.userService.update(id, body);
   }
+  @UseGuards(AuthGuard)
   @Delete(':id')
   deleteUser(@ParamId() id: number) {
     return this.userService.delete(id);
